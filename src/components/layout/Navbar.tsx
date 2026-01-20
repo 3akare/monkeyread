@@ -12,7 +12,7 @@ const Navbar = () => {
             </Link>
 
             <div className="flex items-center gap-6">
-                <Link to="/info" className="p-2 hover:bg-sub/10 rounded-md transition-colors" title="Info">
+                <Link to="/about" className="p-2 hover:bg-sub/10 rounded-md transition-colors" title="about">
                     <Info className="w-6 h-6 text-sub hover:text-text transition-colors" />
                 </Link>
                 <Link to="/settings" className="flex items-center p-2 hover:bg-sub/10 rounded-md transition-colors" title="Settings">

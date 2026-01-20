@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useReader } from '../context/ReaderContext';
 import { Palette, FileText, CheckCircle2, RotateCcw } from 'lucide-react';
@@ -16,6 +16,10 @@ const THEME_OPTIONS = [
 ];
 
 const Settings = () => {
+    useEffect(() => {
+        document.title = "Settings | A minimalistic, customizable reading test";
+    }, []);
+
     const { theme, setTheme } = useTheme();
     const { text, setText } = useReader();
     const [localText, setLocalText] = useState(text);

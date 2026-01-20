@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Info = () => {
+const About = () => {
+    useEffect(() => {
+        document.title = "About | A minimalistic, customizable reading test";
+    }, []);
+
     return (
         <div className="max-w-2xl w-full py-12">
             <div className="flex items-center gap-4 mb-8">
@@ -31,4 +35,4 @@ const Info = () => {
     );
 };
 
-export default Info;
+export default About;

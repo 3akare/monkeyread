@@ -30,6 +30,10 @@ const Reader = () => {
     }, [currentWord]);
 
     useEffect(() => {
+        document.title = "Monkeyread | A minimalistic, customizable reading test";
+    }, []);
+
+    useEffect(() => {
         if (isPlaying && currentIndex < words.length) {
             const interval = (60 / wpm) * 1000;
             timerRef.current = setInterval(() => {
