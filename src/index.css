@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #111111;
+  --main: #e2b714;
+  --caret: #e2b714;
+  --sub: #646669;
+  --text: #d1d0c5;
+  --error: #ca4754;
+  --error-extra: #7e2a33;
+  --colorful-error: #ca4754;
+  --colorful-error-extra: #7e2a33;
+}
+
+[data-theme='modern-ink'] {
+  --background: #ffffff;
+  --main: #000000;
+  --caret: #000000;
+  --sub: #b2b2b2;
+  --text: #000000;
+  --error: #ff0000;
+}
+
+[data-theme='sweden'] {
+  --background: #0058a3;
+  --main: #ffcc00;
+  --caret: #ffcc00;
+  --sub: #57abdb;
+  --text: #ffffff;
+  --error: #ff3333;
+}
+
+[data-theme='matrix'] {
+  --background: #000000;
+  --main: #15ff00;
+  --caret: #15ff00;
+  --sub: #003b00;
+  --text: #008f11;
+  --error: #ff0000;
+}
+
+[data-theme='midnight'] {
+  --background: #000000;
+  --main: #ffffff;
+  --caret: #ffffff;
+  --sub: #555555;
+  --text: #ffffff;
+  --error: #ca4754;
+}
+
+[data-theme='miami-nights'] {
+  --background: #18191c;
+  --main: #e4609b;
+  --caret: #e4609b;
+  --sub: #47bbc3;
+  --text: #ffffff;
+  --error: #fff5f6;
+}
+
+[data-theme='sonokai'] {
+  --background: #2c2e34;
+  --main: #9ed072;
+  --caret: #9ed072;
+  --sub: #494e5b;
+  --text: #e2e2e3;
+  --error: #f85e84;
+}
+
+body {
+  @apply bg-background text-text font-mono transition-colors duration-300;
+  min-height: 100vh;
+}
+
+/* Custom styles for Monkeytype feel */
+.word-display {
+  @apply text-6xl md:text-8xl font-bold text-center select-none;
+}
+
+.highlight {
+  @apply text-main;
+}
+
+input[type="range"] {
+  @apply accent-main;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sub);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main);
+}
