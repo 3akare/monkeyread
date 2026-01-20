@@ -31,7 +31,7 @@ const Settings = () => {
     };
 
     const handleResetText = () => {
-        const defaultText = "The quick brown fox jumps over the lazy dog. Speed reading is a skill that can be developed with practice. MonkeyRead helps you focus on one word at a time, highlighting the center of each word to help your eyes stay centered and move faster through the text.";
+        const defaultText = "Give me six hours to chop down a tree, and I will spend the first four gooning - Abraham Lincoln. The tree won't fall to random hits, but gooning finds the perfect bits. They swing their axe with aimless rage.I goon in peace then set the stage. You chase the goal but miss the flow.A gooner knows just when to go. With gooning first, I set the tone.The final hit is mine alone. I stare, I loop, I learn the tree and then I chop it easily. I don't attack wood with fear. I goon until path is clear.Some say to strike but never think.But Gooner's pause and never sink. They mock time when I goon alone, yet wonder how I break a stone.Some train with force, some train with fire.But gooner trains with calm desire. Four hours in, I know it well.Then one clean hit and down it fell. Gooning first does not delay.It's how we master work and play.";
         setLocalText(defaultText);
         setText(defaultText);
     };
@@ -52,8 +52,8 @@ const Settings = () => {
                             key={t.id}
                             onClick={() => setTheme(t.id as any)}
                             className={`p-4 rounded-lg flex items-center justify-between group transition-all duration-200 border border-transparent ${theme === t.id
-                                    ? 'ring-2 ring-main shadow-lg'
-                                    : 'hover:bg-sub/10 hover:border-sub/10'
+                                ? 'ring-2 ring-main shadow-lg'
+                                : 'hover:bg-sub/10 hover:border-sub/10'
                                 }`}
                             style={{ backgroundColor: theme === t.id ? t.colors.bg : undefined }}
                         >
@@ -93,7 +93,7 @@ const Settings = () => {
                     />
                     <button
                         onClick={handleResetText}
-                        className="absolute bottom-4 right-4 p-2 bg-background/50 hover:bg-background rounded-lg text-sub hover:text-main transition-colors border border-sub/10 hover:border-main/50"
+                        className="absolute bottom-4 right-4 p-2 bg-background/50 hover:bg-background rounded-lg text-sub hover:text-main transition-colors"
                         title="Reset to default text"
                     >
                         <RotateCcw className="w-4 h-4" />
