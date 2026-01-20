@@ -15,12 +15,11 @@ const Reader = () => {
 
     const currentWord = words[currentIndex] || "";
 
-    // Split word for RSVP highlighting (Optimal Recognition Point)
+    // Split word for highlighted character logic
     const splitWord = useMemo(() => {
         if (!currentWord) return { head: "", mid: "", tail: "" };
 
-        // ORP is typically around 35% of the word length, 
-        // but for simplicity we'll use the middle character or slightly before
+        // Optimal Recognition Point (ORP) - middle character
         const midIndex = Math.floor((currentWord.length - 1) / 2);
 
         return {
@@ -67,7 +66,12 @@ const Reader = () => {
     };
 
     return (
-        <div className="w-full max-w-4xl flex flex-col items-center gap-24">
+        <div className="w-full max-w-4xl flex flex-col items-center gap-24 relative mt-12 pb-16">
+            {/* Instruction - Moved above slider */}
+            <p className="absolute -top-12 text-sub/20 text-sm font-medium tracking-widest uppercase">
+                focus on the highlighted letter
+            </p>
+
             {/* Speed Control */}
             <div className="w-full max-w-xs space-y-4">
                 <div className="flex justify-between items-center text-sub font-bold text-sm">
@@ -76,7 +80,7 @@ const Reader = () => {
                 </div>
                 <input
                     type="range"
-                    min="100"
+                    min="300"
                     max="1000"
                     step="10"
                     value={wpm}
@@ -86,26 +90,20 @@ const Reader = () => {
             </div>
 
             {/* Word Display */}
-            <div className="h-32 flex items-center justify-center relative w-full">
-                {/* Alignment Guide */}
-                <div className="absolute top-0 bottom-0 left-1/2 w-px bg-sub/10 -translate-x-1/2 hidden md:block" />
-
-                <div className="text-6xl md:text-8xl font-bold flex select-none">
-                    <span className="text-text/20 text-right min-w-[50%] flex justify-end">
-                        {splitWord.head}
-                    </span>
-                    <span className="text-main">
-                        {splitWord.mid}
-                    </span>
-                    <span className="text-text/20 text-left min-w-[50%] flex justify-start">
-                        {splitWord.tail}
-                    </span>
+            <div className="flex flex-col items-center gap-8 w-full mb-8">
+                <div className="h-40 flex items-center justify-center w-full relative">
+                    <div className="text-6xl md:text-8xl font-bold text-center select-none w-full break-all">
+                        <span className="text-text/40">{splitWord.head}</span>
+                        <span className="text-main">{splitWord.mid}</span>
+                        <span className="text-text/40">{splitWord.tail}</span>
+                    </div>
                 </div>
             </div>
 
             {/* Playback Controls */}
             <div className="flex flex-col items-center gap-6">
-                <p className="text-sub text-sm font-medium animate-pulse">
+                <p className="text-sub text-sm font-medium h-5 text-center w-full">
+                    {/* Fixed height to prevent shaking */}
                     {!isPlaying && !isFinished && currentIndex === 0 && "Press start to begin reading"}
                     {isPlaying && "Reading..."}
                     {isFinished && "Finished!"}
@@ -117,7 +115,7 @@ const Reader = () => {
                         <>
                             <button
                                 onClick={handleTogglePlay}
-                                className="flex items-center gap-2 px-8 py-3 bg-sub/10 hover:bg-sub/20 rounded-lg transition-all transform hover:scale-105"
+                                className="flex items-center gap-2 px-8 py-3 bg-sub/10 hover:bg-sub/20 rounded-lg transition-colors min-w-[140px] justify-center"
                             >
                                 {isPlaying ? (
                                     <>
@@ -145,7 +143,7 @@ const Reader = () => {
                     ) : (
                         <button
                             onClick={handleRestart}
-                            className="flex items-center gap-2 px-8 py-3 bg-sub/10 hover:bg-sub/20 rounded-lg transition-all transform hover:scale-105"
+                            className="flex items-center gap-2 px-8 py-3 bg-sub/10 hover:bg-sub/20 rounded-lg transition-colors min-w-[140px] justify-center"
                         >
                             <RotateCcw className="w-5 h-5 text-main" />
                             <span className="font-bold text-sm">restart</span>

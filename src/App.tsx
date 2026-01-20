@@ -8,7 +8,7 @@ import Settings from './pages/Settings';
 function App() {
     return (
         <Router>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col h-screen overflow-hidden">
                 <Navbar />
                 <main className="flex-grow flex flex-col justify-center items-center px-4">
                     <Routes>

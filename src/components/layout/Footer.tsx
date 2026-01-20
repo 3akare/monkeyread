@@ -2,7 +2,7 @@ import { Mail, Github, Linkedin } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="w-full max-w-5xl mx-auto py-8 px-4 flex justify-start items-center gap-8">
+        <footer className="w-full max-w-7xl mx-auto py-8 px-4 flex justify-start items-center gap-8">
             <a
                 href="mailto:contact@example.com"
                 className="flex items-center gap-2 text-sub hover:text-text transition-colors text-sm group"

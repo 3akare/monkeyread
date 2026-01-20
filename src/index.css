@@ -16,11 +16,29 @@
   --colorful-error-extra: #7e2a33;
 }
 
+[data-theme='paper'] {
+  --background: #d8c8b8;
+  --main: #d2691e;
+  --caret: #d2691e;
+  --sub: #5c4b43;
+  --text: #3d2f28;
+  --error: #8b3a3a;
+}
+
+[data-theme='spiderman'] {
+  --background: #0f0f1b;
+  --main: #e23636;
+  --caret: #e23636;
+  --sub: #506788;
+  --text: #e0e6ed;
+  --error: #e23636;
+}
+
 [data-theme='modern-ink'] {
   --background: #ffffff;
-  --main: #000000;
-  --caret: #000000;
-  --sub: #b2b2b2;
+  --main: #ff3636;
+  --caret: #ff3636;
+  --sub: #595959;
   --text: #000000;
   --error: #ff0000;
 }
@@ -45,11 +63,11 @@
 
 [data-theme='midnight'] {
   --background: #000000;
-  --main: #ffffff;
-  --caret: #ffffff;
+  --main: #ff6b6b;
+  --caret: #ff6b6b;
   --sub: #555555;
   --text: #ffffff;
-  --error: #ca4754;
+  --error: #ff6b6b;
 }
 
 [data-theme='miami-nights'] {
@@ -72,7 +90,8 @@
 
 body {
   @apply bg-background text-text font-mono transition-colors duration-300;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Custom styles for Monkeytype feel */
@@ -84,8 +103,30 @@ body {
   @apply text-main;
 }
 
+.caret-main {
+  caret-color: var(--main);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 input[type="range"] {
   @apply accent-main;
+  background-color: color-mix(in srgb, var(--sub), transparent 80%);
+}
+
+/* Fix for slider visibility on light themes like Modern Ink */
+[data-theme='modern-ink'] input[type="range"] {
+  background-color: #e5e5e5;
+  /* Distinct track color */
 }
 
 ::-webkit-scrollbar {
@@ -93,7 +134,7 @@ input[type="range"] {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
