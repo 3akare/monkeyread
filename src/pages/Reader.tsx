@@ -106,10 +106,10 @@ const Reader = () => {
             {/* Word Display */}
             <div className="flex flex-col items-center gap-8 w-full mb-8">
                 <div className="h-40 flex items-center justify-center w-full relative">
-                    <div className="text-6xl md:text-8xl font-bold text-center select-none w-full break-all">
-                        <span className="text-text/40">{splitWord.head}</span>
-                        <span className="text-main">{splitWord.mid}</span>
-                        <span className="text-text/40">{splitWord.tail}</span>
+                    <div className="text-6xl md:text-8xl font-bold flex w-full select-none items-baseline">
+                        <div className="flex-1 text-right text-text/40 whitespace-nowrap min-w-0">{splitWord.head}</div>
+                        <div className="text-main">{splitWord.mid}</div>
+                        <div className="flex-1 text-left text-text/40 whitespace-nowrap min-w-0">{splitWord.tail}</div>
                     </div>
                 </div>
             </div>
