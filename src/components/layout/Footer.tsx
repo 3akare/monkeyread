@@ -20,7 +20,7 @@ const Footer = () => {
                 <span>github</span>
             </a>
             <a
-                href="https://linkedin.com/in/3akare"
+                href="https://www.linkedin.com/posts/3akare_saw-this-youtube-short-and-thought-it-was-activity-7419405515199299585-knEd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sub hover:text-text transition-colors text-sm group"

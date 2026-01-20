@@ -7,7 +7,6 @@ const Reader = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     const words = useMemo(() => {
         return text.trim().split(/\s+/).filter(Boolean);
@@ -29,29 +28,40 @@ const Reader = () => {
         };
     }, [currentWord]);
 
+    const isSentenceEnd = (word: string) => /[.!?:;]$/.test(word);
+
     useEffect(() => {
         document.title = "Monkeyread | A minimalistic, customizable reading test";
     }, []);
 
     useEffect(() => {
-        if (isPlaying && currentIndex < words.length) {
-            const interval = (60 / wpm) * 1000;
-            timerRef.current = setInterval(() => {
-                setCurrentIndex((prev) => {
-                    if (prev + 1 >= words.length) {
-                        setIsPlaying(false);
-                        setIsFinished(true);
-                        return prev;
-                    }
-                    return prev + 1;
-                });
-            }, interval);
-        } else {
-            if (timerRef.current) clearInterval(timerRef.current);
-        }
+        let timeoutId: ReturnType<typeof setTimeout>;
+
+        const playNext = () => {
+            if (isPlaying && currentIndex < words.length) {
+                const baseInterval = (60 / wpm) * 1000;
+                const currentWord = words[currentIndex] || "";
+
+                // Add extra delay for sentence ends (2x the base interval)
+                const delay = isSentenceEnd(currentWord) ? baseInterval * 6 : baseInterval;
+
+                timeoutId = setTimeout(() => {
+                    setCurrentIndex((prev) => {
+                        if (prev + 1 >= words.length) {
+                            setIsPlaying(false);
+                            setIsFinished(true);
+                            return prev;
+                        }
+                        return prev + 1;
+                    });
+                }, delay);
+            }
+        };
+
+        playNext();
 
         return () => {
-            if (timerRef.current) clearInterval(timerRef.current);
+            if (timeoutId) clearTimeout(timeoutId);
         };
     }, [isPlaying, wpm, currentIndex, words.length]);
 

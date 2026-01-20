@@ -1,19 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme, THEME_OPTIONS } from '../context/ThemeContext';
 import { useReader } from '../context/ReaderContext';
 import { Palette, FileText, CheckCircle2, RotateCcw } from 'lucide-react';
-
-const THEME_OPTIONS = [
-    { id: 'default', name: 'Monkey', colors: { bg: '#111111', main: '#e2b714' } },
-    { id: 'modern-ink', name: 'Modern Ink', colors: { bg: '#ffffff', main: '#000000' } },
-    { id: 'paper', name: 'Novels', colors: { bg: '#d8c8b8', main: '#4a3b32' } },
-    { id: 'sweden', name: 'Sweden', colors: { bg: '#0058a3', main: '#ffcc00' } },
-    { id: 'matrix', name: 'Matrix', colors: { bg: '#000000', main: '#15ff00' } },
-    { id: 'midnight', name: 'Midnight', colors: { bg: '#000000', main: '#ffffff' } },
-    { id: 'miami-nights', name: 'Miami', colors: { bg: '#18191c', main: '#e4609b' } },
-    { id: 'sonokai', name: 'Sonokai', colors: { bg: '#2c2e34', main: '#9ed072' } },
-    { id: 'spiderman', name: 'Spiderman', colors: { bg: '#0f0f1b', main: '#e23636' } },
-];
 
 const Settings = () => {
     useEffect(() => {
